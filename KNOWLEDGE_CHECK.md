@@ -13,6 +13,7 @@ Suppose your instance is running and has a public IP address, but `ssh` cannot c
 *Hint:* the lecture slides, and [class/07-ec2](https://github.com/ksiller/DS2022/blob/main/class/07-ec2/README.md), part [3. Launch an EC2 instance in the AWS Console + SSH](https://github.com/ksiller/DS2022/blob/main/class/07-ec2/README.md#3-launch-an-ec2-instance-in-the-aws-console--ssh-15-min) and [Troubleshooting](https://github.com/ksiller/DS2022/blob/main/class/07-ec2/README.md#troubleshooting).
 
 **Your answer:** Which path did you take in the console (service → page → tab)?
+I selected EC2, then under network and security I viewed security groups. I then clicked on the security group launch-wizard-1
 
 ...
 
@@ -25,7 +26,7 @@ Suppose you uploaded a new book to your bucket, but several minutes later MongoD
 *Hint:* the class demo [A Lambda function in the AWS Console](https://github.com/ksiller/DS2022/blob/main/demos/07-lambda/README.md), steps [5. Add the S3 trigger](https://github.com/ksiller/DS2022/blob/main/demos/07-lambda/README.md#5-add-the-s3-trigger) and [8. Preview: the same steps with Chalice](https://github.com/ksiller/DS2022/blob/main/demos/07-lambda/README.md#8-preview-the-same-steps-with-chalice).
 
 **Your answer:** Which path did you take in the console (service → page → tab)?
-
+I selected Lambda, event functions, and then the name of my function (I know this is a hypothetical situation, but in my case I would select book-analyzer-dev-analyze_new_book, and I can view the trigger from that tab.
 ...
 
 ## 3. Lambda: where do I find the error?
@@ -37,7 +38,7 @@ Suppose the function did start, but MongoDB still has no document for the book. 
 *Hint:* [Part 2, Step 7](README.md#step-7-upload-a-new-book) in the README, and the class demo [A Lambda function in the AWS Console](https://github.com/ksiller/DS2022/blob/main/demos/07-lambda/README.md), step [7. Check the CloudWatch logs](https://github.com/ksiller/DS2022/blob/main/demos/07-lambda/README.md#7-check-the-cloudwatch-logs).
 
 **Your answer:** Which path did you take in the console (service → page → tab)?
-
+I chose Lambda, then selected event function and my function name (same as the question above. Then I clicked on the monitor tab and "view cloudwatch logs", and I selected my latest event log.
 ...
 
 ## 4. EC2 or Lambda: a backlog or new uploads?
@@ -53,5 +54,5 @@ For comparison, typical times in this lab:
 - **Lambda** (512 MB): about 2 seconds for one book, including about 1 second to start the function the first time (a cold start). The function runs, and costs, only while a book is analyzed.
 
 **Your answer:**
-
+In Case A, I would definitely chose to use an EC2 instance, because I am aware of the fact that I only need to analyze the 5000 books once, and can briefly rent an instance, do my bulky job, and then terminate the instance. In case B, I would be more inclined to use Lambda, because I am not sure at which times I need to upload the books, and the analysis is a brief, one minute long process that only requires the brief use of AWS. It is more cost efficient and resource efficient to use the lambda for case B.
 ...
